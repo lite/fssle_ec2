@@ -1,0 +1,8 @@
+# chef-server on ec2
+
+    ssh -i fssle-ec2.pem ec2-user@www.fssle.com
+    sudo bash -c 'bash <(curl -sLB https://raw.github.com/gist/1209226/bootstrap_chef_server.sh) --hostname www.fssle.com'
+
+# gollum on ec2 by chef
+
+

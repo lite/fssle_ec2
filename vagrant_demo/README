@@ -1,0 +1,20 @@
+* vagrant
+  http://vagrantup.com
+
+* veewee
+  https://github.com/jedi4ever/veewee
+  vagrant basebox templates`
+  mkdir iso
+  vagrant basebox define 'fssle' 'ubuntu-11.04-server-i386'
+  vagrant basebox build 'fssle'
+  vagrant basebox validate 'fssle'
+  vagrant basebox export 'fssle'
+  vagrant box add 'fssle' 'fssle'
+  vagrant init 'fssle'
+  vagrant up
+  vagrant reload
+  vagrant ssh
+
+* GUI
+  username: vagrant
+  password: vagrant

@@ -1,0 +1,50 @@
+* ec2
+  https://console.aws.amazon.com/ec2/home?region=us-west-1&#s=SecurityGroups  
+  22 (SSH)	0.0.0.0/0	Delete
+  80 (HTTP)	0.0.0.0/0	Delete
+
+  ssh-keygen -R www.fssle.com
+  ssh -i fssle-ec2.pem ubuntu@www.fssle.com
+
+  https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key
+  export AWS_ACCESS_KEY_ID=""
+  export AWS_SECRET_ACCESS_KEY=""
+
+  http://uec-images.ubuntu.com/server/releases/11.04/release/
+  knife[:aws_access_key_id]     = "#{ENV['AWS_ACCESS_KEY_ID']}"
+  knife[:aws_secret_access_key] = "#{ENV['AWS_SECRET_ACCESS_KEY']}"
+  knife[:identity_file]         = 'fssle-ec2.pem'
+  knife[:aws_ssh_key_id]        = "fssle-ec2"
+  knife[:availability_zone]     = 'us-west-1a'
+  knife[:region]                = 'us-west-1'
+  knife[:aws_image_id]          = 'ami-43580406'
+
+  knife ec2 server list
+  knife ec2 server delete i-296cd36e
+  knife ec2 server create -I ami-43580406 -f t1.micro -x ubuntu -G default 
+
+* opscode
+  https://community.opscode.com/users/username/user_key/new
+  username.pem 
+  knife.rb 
+  org-validator.pem
+
+* cookbook
+  knife cookbook site download apt
+  knife cookbook site download aws
+  knife cookbook site download apache2
+
+* chef
+  * role
+  knife role list
+  export EDITOR=vim && knife role create base
+  knife role edit base
+  knife role show base
+  knife role from file roles/base.rb
+  * cookbook
+  knife cookbook create fssle
+  knife cookbook list
+  knife cookbook upload aws apt apache2
+  knife ec2 server create "role[fssle]" -I ami-43580406 -f t1.micro -G default -region -S knife -i ./fssle-ec2.pem --ssh-user ubuntu 
+FAQ:
+  "You did not provided a valid 'AWS SSH Key Id' value"

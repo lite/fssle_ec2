@@ -45,6 +45,13 @@
   knife cookbook create fssle
   knife cookbook list
   knife cookbook upload aws apt apache2
-  knife ec2 server create "role[fssle]" -I ami-43580406 -f t1.micro -G default -region -S knife -i ./fssle-ec2.pem --ssh-user ubuntu 
-FAQ:
-  "You did not provided a valid 'AWS SSH Key Id' value"
+  * bootstrap
+  knife ec2 server create -I ami-43580406 -f t1.micro -G default -region -S knife -i ./fssle-ec2.pem -x ubuntu 
+  knife bootstrap 50.18.74.70 -r "role[fssle]" -N i-ab46cfec -i fssle-ec2.pem -x ubuntu --sudo
+  knife node run_list add i-ab46cfec "role[fssle]"
+* cucumber-chef
+  cucumber-chef displayconfig
+
+http://gerhardlazu.com/2010/08/using-chef-to-manage-amazon-ec2-instances-part2/
+http://agiletesting.blogspot.com/2010/07/bootstrapping-ec2-instances-with-chef.html
+https://github.com/Atalanta/cucumber-chef

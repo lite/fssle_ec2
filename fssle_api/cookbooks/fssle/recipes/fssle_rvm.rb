@@ -10,22 +10,25 @@ end
  
 bash "install RVM" do
   user "root"
-  code <<-EOH
-    bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
-    bash ~/.bashrc
-  EOH
-  not_if "rvm --version"
+  code "bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)"
+  #not_if "rvm --version"
 end
  
-bash "install REE in RVM" do
+log "run bashrc"
+bash "enable rvm" do
   user "root"
-  code "rvm install ree"
-  not_if "rvm list | grep ree"
+  code "source ~/.bashrc"
 end
+
+#bash "install REE in RVM" do
+#  user "root"
+#  code "rvm install ree"
+#  not_if "rvm list | grep ree"
+#end
  
-bash "make REE the default ruby" do
-  user "root"
-  code "rvm --default ree"
-end
+#bash "make REE the default ruby" do
+#  user "root"
+#  code "rvm --default ree"
+#end
  
 gem_package "chef" # re-install the chef gem into REE to enable subsequent chef-client runs

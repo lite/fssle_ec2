@@ -15,22 +15,8 @@ execute "add local gem environment" do
     not_if "grep GEM_HOME /opt/fssle/.bash_profile"
 end
 
-execute "gem install gollum" do
-    command "gem install gollum --no-rdoc --no-ri"
-    creates "/opt/fssle/.gem/bin/gollum"
-    cwd "/opt/fssle"
-    user "fssle"
-    group "fssle"
-    timeout 300
-end
-
-execute "gem install RedCloth" do
-    command "gem install RedCloth --no-rdoc --no-ri"
-    cwd "/opt/fssle"
-    user "fssle"
-    group "fssle"
-    timeout 300
-end
+gem_package "gollum"
+gem_package "RedCloth"
 
 directory "/opt/fssle/git" do
     owner "fssle"
@@ -39,7 +25,7 @@ directory "/opt/fssle/git" do
 end
 
 execute "get source by git clone" do
-    command "git clone git clone git://github.com/mojombo/jekyll.wiki.git wiki" 
+    command "git clone git://github.com/mojombo/jekyll.wiki.git wiki" 
     user "fssle"
     group "fssle"
     cwd "/opt/fssle/git"
@@ -47,7 +33,7 @@ execute "get source by git clone" do
 end
 
 execute "run gollum" do
-  command "gollum --port 80"
+  command "gollum --port 8080"
   user "fssle"
   group "fssle"
   cwd "/opt/fssle/git/wiki"

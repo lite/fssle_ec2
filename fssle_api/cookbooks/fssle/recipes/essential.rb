@@ -9,7 +9,7 @@ when "ubuntu","debian"
   package "dnsutils" do
     action :install
   end
-  package "vim-scripts"
+  #package "vim-scripts"
   package "strace"
   package "ltrace"
   package "lsof"

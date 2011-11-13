@@ -44,7 +44,8 @@
   * cookbook
   knife cookbook create fssle
   knife cookbook list
-  knife cookbook upload aws apt apache2
+  knife cookbook site download aws apt libxml2-dev
+  knife cookbook upload aws apt libxml2-dev
   * bootstrap
   knife ec2 server create -I ami-43580406 -f t1.micro -G default -region -S knife -i ./fssle-ec2.pem -x ubuntu 
   knife bootstrap 50.18.74.70 -r "role[fssle]" -N i-ab46cfec -i fssle-ec2.pem -x ubuntu --sudo

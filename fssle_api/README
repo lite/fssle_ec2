@@ -1,7 +1,10 @@
 * ec2
+  https://console.aws.amazon.com/ec2/home?
+  
   https://console.aws.amazon.com/ec2/home?region=us-west-1&#s=SecurityGroups  
   22 (SSH)	0.0.0.0/0	Delete
   80 (HTTP)	0.0.0.0/0	Delete
+  8080 (HTTP)	0.0.0.0/0	Delete
 
   ssh-keygen -R www.fssle.com
   ssh -i fssle-ec2.pem ubuntu@www.fssle.com

@@ -26,6 +26,7 @@ end
 
 execute "get source by git clone" do
     command "git clone git://github.com/mojombo/jekyll.wiki.git wiki" 
+    not_if {File.exists?("/opt/fssle/git/wiki")}
     user "fssle"
     group "fssle"
     cwd "/opt/fssle/git"

@@ -18,3 +18,6 @@
 * GUI
   username: vagrant
   password: vagrant
+
+    sudo chef-solo -c /tmp/vagrant-chef/solo.rb -j /tmp/vagrant-chef/dna.json -l debug
+    vagrant provision

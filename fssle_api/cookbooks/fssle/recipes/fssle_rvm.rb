@@ -10,10 +10,12 @@ end
  
 bash "install RVM" do
   user "root"
-  code "bash < <( curl -L http://bit.ly/rvm-install-system-wide )"
+  code <<-EOH
+    bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+    bash ~/.bashrc
+  EOH
   not_if "rvm --version"
 end
-cookbook_file "/etc/profile.d/rvm.sh"
  
 bash "install REE in RVM" do
   user "root"

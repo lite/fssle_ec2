@@ -15,7 +15,7 @@ Vagrant::Config.run do |config|
 
   # Assign this VM to a host only network IP, allowing you to access it
   # via the IP.
-  config.vm.network "33.33.33.10"
+  # config.vm.network "33.33.33.10"
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
@@ -52,14 +52,15 @@ Vagrant::Config.run do |config|
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
   #
-  # config.vm.provision :chef_solo do |chef|
-  #   chef.cookbooks_path = "cookbooks"
-  #   chef.add_recipe "mysql"
-  #   chef.add_role "web"
-  #
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "../fssle_api/cookbooks"
+    #chef.add_recipe "mysql"
+    chef.roles_path = "../fssle_api/roles"
+    chef.add_role "fssle"
+ 
   #   # You may also specify custom JSON attributes:
   #   chef.json = { :mysql_password => "foo" }
-  # end
+  end
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).

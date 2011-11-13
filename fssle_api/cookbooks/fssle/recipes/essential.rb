@@ -3,6 +3,9 @@ package "screen"
 package "sudo"
 package "zip"
 package "unzip"
+package "curl"
+package "build-essential"
+package "git-core"
 
 case node[:platform] 
 when "ubuntu","debian"

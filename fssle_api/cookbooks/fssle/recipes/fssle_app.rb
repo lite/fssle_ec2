@@ -1,35 +1,18 @@
 # This recipe installs the rea-env gem for the
 # fssle user. 
 
-# Make sure we have a fssle user
+package "runit"
+package "libxml2-dev"
+
+gem_package "RedCloth"
+gem_package "gollum"
+
 user "fssle" do
    comment "Fssle User"
    system  true
    home    "/opt/fssle"
    shell   "/bin/bash"
    supports  :manage_home => true
-end
-
-execute "add local gem environment" do
-    command "echo -e 'GEM_HOME=$HOME/.gem export GEM_HOME\nPATH=$PATH:$GEM_HOME/bin export PATH' >> /opt/fssle/.bash_profile"
-    not_if "grep GEM_HOME /opt/fssle/.bash_profile"
-end
-
-execute "gem install gollum" do
-    command "gem install gollum --no-rdoc --no-ri"
-    creates "/opt/fssle/.gem/bin/gollum"
-    cwd "/opt/fssle"
-    user "fssle"
-    group "fssle"
-    timeout 300
-end
-
-execute "gem install RedCloth" do
-    command "gem install RedCloth --no-rdoc --no-ri"
-    cwd "/opt/fssle"
-    user "fssle"
-    group "fssle"
-    timeout 300
 end
 
 directory "/opt/fssle/git" do

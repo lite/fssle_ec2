@@ -1,3 +1,9 @@
+* knife-ec2
+  gem install knife-ec2
+  knife ec2 server list
+* knife-github-cookbooks
+  gem install knife-github-cookbooks
+  knife cookbook github install cookbooks/nginx
 * ec2
   https://console.aws.amazon.com/ec2/home?region=us-west-1&#s=SecurityGroups  
   22 (SSH)	0.0.0.0/0	Delete
@@ -32,7 +38,6 @@
 * cookbook
   knife cookbook site download apt
   knife cookbook site download aws
-  knife cookbook site download apache2
 
 * chef
   * role
@@ -44,7 +49,6 @@
   * cookbook
   knife cookbook create fssle
   knife cookbook list
-  knife cookbook site download aws apt libxml2-dev
   knife cookbook upload aws apt libxml2-dev
   * bootstrap
   knife ec2 server create -I ami-43580406 -f t1.micro -G default -region -S knife -i ./fssle-ec2.pem -x ubuntu 

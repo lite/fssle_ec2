@@ -33,6 +33,15 @@ execute "get source by git clone" do
     timeout 300
 end
 
+execute "get source by git clone" do
+    command "git clone git://github.com/huacnlee/ruby-china.git" 
+    not_if {File.exists?("/opt/fssle/git/myproj")}
+    user "fssle"
+    group "fssle"
+    cwd "/opt/fssle/git"
+    timeout 300
+end
+
 execute "run gollum" do
   command "gollum --port 8080"
   user "fssle"

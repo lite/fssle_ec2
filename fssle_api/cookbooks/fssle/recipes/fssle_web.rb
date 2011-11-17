@@ -1,8 +1,5 @@
-include_recipe "passenger"
+include_recipe "apache2"
+include_recipe "apache2::mod_ssl"
+include_recipe "apache2::mod_rewrite"
+include_recipe "passenger_apache2::mod_rails"
 
-web_app "myproj" do
-  docroot "/srv/myproj/public"
-  server_name "myproj.#{node[:domain]}"
-  server_aliases [ "myproj", node[:hostname] ]
-  rails_env "production"
-end

@@ -8,6 +8,7 @@ depends "apt"
 depends "aws"
 depends "build-essential"
 depends "apache2"
+depends "passenger_apache2"
 
 %w{ redhat centos ubuntu debian }.each do |os|
     supports os

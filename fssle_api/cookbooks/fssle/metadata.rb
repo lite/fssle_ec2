@@ -7,5 +7,9 @@ recipe "fssle", "Installs Fssle"
 depends "apt"
 depends "aws"
 depends "build-essential"
+depends "apache2"
 
-supports "debian"
+%w{ redhat centos ubuntu debian }.each do |os|
+    supports os
+end
+

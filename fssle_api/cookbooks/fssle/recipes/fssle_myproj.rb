@@ -1,13 +1,6 @@
 # This recipe installs the rea-env gem for the
 # fssle user. 
 
-directory "/opt/fssle/git" do
-  owner "fssle"
-  group "fssle"
-  mode "0750"
-  recursive true
-end
-
 gem_package "rails"
 
 bash "new myproj" do

@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+  ServerName <%= @params[:server_name] %>
+  DocumentRoot <%= @params[:docroot] %>
+
+  RackEnv development
+  RackBaseURI /
+  <Directory <%= @params[:docroot] %>>
+    Allow from all
+    Options -MultiViews
+  </Directory>
+</VirtualHost>
+

@@ -31,4 +31,5 @@ end
 #  code "rvm --default ree"
 #end
  
+gem_package "bundle"
 gem_package "chef" # re-install the chef gem into REE to enable subsequent chef-client runs
